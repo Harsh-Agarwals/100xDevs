@@ -12,11 +12,13 @@ class Calculator {
         this.result*=num
     }
     divide(num) {
-        if (num==0) {
-            throw "Wrong variable";
+        if (num === 0) {
+            this.clear();
+            return new Error("Cannot divide by zero");
         }
-        this.result/=num
+        this.result /= num;
     }
+    
     clear() {
         this.result = 0
     }
@@ -24,7 +26,11 @@ class Calculator {
         return this.result
     }
     calculate(expression) {
-        return true
+        try {
+            return eval(expression.split('').filter(x => x!=' ').join(''))
+        } catch(e) {
+            console.log("Bad Code!")
+        }
     }
 }
 
@@ -41,5 +47,13 @@ console.log(calculator1.getResult());
 calculator1.divide(4)
 calculator1.divide(0)
 console.log(calculator1.getResult());
+console.log(calculator1.calculate('2 + 3 * 4'));
+console.log(calculator1.calculate('(   15 + 3) /   6   '));
+console.log(calculator1.calculate('(2 + 3) * (6 - (4 + 1) / 2) + 7'));
+console.log(calculator1.calculate('10 / 0'));
+console.log(calculator1.calculate('10 + (2 + 3'));
+
+
+
 
 
