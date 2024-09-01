@@ -1,0 +1,37 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "Authentication using Nodejs, react, Express from Scratch",
+  "main": "backend/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harsh-Agarwals/100xDevs.git"
+  },
+  "keywords": [
+    "Authentication"
+  ],
+  "author": "Harsh Agarwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harsh-Agarwals/100xDevs/issues"
+  },
+  "homepage": "https://github.com/Harsh-Agarwals/100xDevs#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mailtrap": "^3.4.0",
+    "mongoose": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
