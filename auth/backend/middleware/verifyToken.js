@@ -4,6 +4,8 @@ dotenv.config();
 
 export const verifyToken = async(req, res, next)=> {
     const token = req.cookies.token;
+    console.log("token", token);
+    
     if (!token) {
         return res.status(400).json({success: false, message: "unauthorised - no token found!"});
     }
@@ -13,6 +15,7 @@ export const verifyToken = async(req, res, next)=> {
             return res.status(400).json({success:false, message: "unauthorised token"});
         }
         req.userID = decode.userID;
+        console.log(req.userID, decode.userID);        
         next();
     } catch (error) {
         console.log("Error in verifying token", error);

@@ -177,7 +177,10 @@ export const checkAuth = async(req, res)=> {
         if (!user) {
             return res.status(400).json({success: false, message: "Can't find the user!"});
         }
-        return res.status(201).json({success: true, ...user._doc})
+        return res.status(201).json({success: true, user: {
+            ...user._doc
+        }
+    })
     } catch (error) {
         console.log("Error in checkAuth", error);
         res.status(400).json({success: false, message: "Error in checkauth!"});        
