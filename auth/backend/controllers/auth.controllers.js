@@ -1,8 +1,11 @@
 import User from '../models/user.models.js'
 import bcrypt from 'bcrypt'
+import crypto from 'crypto'
+import dotenv from 'dotenv'
 import { verificationToken } from '../utils/generateVerificationToken.js'
 import { generateTokenAndCookies } from '../utils/generateTokenAndCookies.js'
-import { sendVerificationCode, sendVerificationMail } from '../mails/mails.js'
+import { resetPasswordMail, sendVerificationCode, sendVerificationMail } from '../mails/mails.js'
+dotenv.config();
 
 export const signup = async(req, res) => {
     const {email, password, name} = req.body
@@ -112,3 +115,34 @@ export const verifyMail = async(req, res) => {
         return res.status(400).json({success: false, message: error.message})
     }
 }
+
+export const forgetPassword = async(req, res) => {
+    const { userMail } = req.body;
+    const user = await User.findOne({email: userMail});
+    console.log(user);
+    
+    try {
+        if (user) {
+            let resetToken = crypto.randomBytes(20).toString("hex");
+            let resetURL = `${process.env.BASE_URL}/reset-password/${resetToken}`;
+
+            user.resetPasswordToken = resetToken;
+            user.resetPaswordTokenExpireAt = Date.now() + 1*60*60*1000 // 1 hour
+            await user.save();
+
+            try {
+                await resetPasswordMail(userMail, resetURL);
+                return res.status(201).json({success: true, message: "Reset Password mail sent!"})
+            } catch(e) {
+                throw new Error("Error sending mail:", e)
+            }
+        } else {
+            return res.status(400).json({success: false, message: "User does not exists! Check mail and retry."})
+        }
+    } catch(e) {
+        console.log("Error", e);
+        return res.status(400).json({success: false, message: `Error ${e}`})        
+    }
+}
+
+export const resetPassword = async(req, res) => {}
