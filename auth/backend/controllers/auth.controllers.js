@@ -4,7 +4,7 @@ import crypto from 'crypto'
 import dotenv from 'dotenv'
 import { verificationToken } from '../utils/generateVerificationToken.js'
 import { generateTokenAndCookies } from '../utils/generateTokenAndCookies.js'
-import { resetPasswordMail, sendVerificationCode, sendVerificationMail } from '../mails/mails.js'
+import { resetPasswordMail, sendResetSuccessMail, sendVerificationCode, sendVerificationMail } from '../mails/mails.js'
 dotenv.config();
 
 export const signup = async(req, res) => {
@@ -145,4 +145,41 @@ export const forgetPassword = async(req, res) => {
     }
 }
 
-export const resetPassword = async(req, res) => {}
+export const resetPassword = async(req, res) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+    const user = await User.findOne({resetPasswordToken: token});
+    if(user) {
+        try {
+            if (user.resetPaswordTokenExpireAt >= Date.now()) {
+                const hashedPassword = await bcrypt.hash(newPassword, 16);
+                user.password = hashedPassword;
+                user.resetPasswordToken = undefined;
+                user.resetPaswordTokenExpireAt = undefined;
+                await user.save()
+                await sendResetSuccessMail(user.email);
+                return res.status(201).json({success: true, message: "Password successfully reset!"});
+            } else {
+                return res.status(400).json({success: false, message: "Token expired, please retry resetting password!"})
+            }
+        } catch (error) {
+            console.log(`Error saving password: ${error}`);
+            return res.status(400).json({success: false, message: "Error saving password"});
+        }
+    } else {
+        throw new Error("Failed to find the user, please retry!");
+    }
+}
+
+export const checkAuth = async(req, res)=> {
+    try {
+        const user = User.findOne(req.userId).select("-password");
+        if (!user) {
+            return res.status(400).json({success: false, message: "Can't find the user!"});
+        }
+        return res.status(201).json({success: true, ...user._doc})
+    } catch (error) {
+        console.log("Error in checkAuth", error);
+        res.status(400).json({success: false, message: "Error in checkauth!"});        
+    }
+}
