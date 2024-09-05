@@ -173,14 +173,11 @@ export const resetPassword = async(req, res) => {
 
 export const checkAuth = async(req, res)=> {
     try {
-        const user = User.findOne(req.userId).select("-password");
+        const user = await User.findOne(req.userId).select("-password");
         if (!user) {
             return res.status(400).json({success: false, message: "Can't find the user!"});
         }
-        return res.status(201).json({success: true, user: {
-            ...user._doc
-        }
-    })
+        return res.status(201).json({success: true, user})
     } catch (error) {
         console.log("Error in checkAuth", error);
         res.status(400).json({success: false, message: "Error in checkauth!"});        
