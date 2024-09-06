@@ -31,7 +31,7 @@ export default function SignupPage() {
           <InputComponent icon={Mail} type="email" name="userEmail" id="userEmail" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           {/* <InputComponent icon={KeyRound} type="password" name="userPwd" id="userPwd" placeholder="Password" value={pwd} onChange={(e) => setPwd(e.target.value)} /> */}
           <PasswordStrength value={pwd} onChange={(e) => setPwd(e.target.value)} />
-          <input type="submit" value="Sign Up" className=' bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-medium py-2 rounded-md mt-10 cursor-pointer hover:scale-105 focus:scale-100 focus:border-green-900 focus:ring-green-400 focus:ring-2' />
+          <input type="submit" value="Sign Up" className=' bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-medium py-2 rounded-md mt-4 cursor-pointer hover:scale-105 focus:scale-100 focus:border-green-900 focus:ring-green-400 focus:ring-2' />
         </form>
         <div className=' bg-black rounded-t-none rounded-2xl text-center py-3'>
           <h1 className=' font-medium text-sm text-gray-500'>Already have an Account? <a href="/login" className=' font-bold text-green-600 hover:text-green-400'>Login</a></h1>
