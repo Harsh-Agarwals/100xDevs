@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars on the root */
+    height: 100%;
+    width: 100%;
+  }
+  
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    -webkit-text-fill-color: white; /* Ensure text color is correct */
+  }
+  
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    -webkit-text-fill-color: white; /* Ensure text color is correct */
+  }
+  
+  input:-moz-autofill {
+    box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    -moz-text-fill-color: white; /* Ensure text color is correct */
+  }
+  
+  input:-moz-autofill:focus {
+    box-shadow: 0 0 0 1000px rgb(6 78 59 / 1) inset;
+    -moz-text-fill-color: white; /* Ensure text color is correct */
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .password-strength {
+    position: relative;
+    height: 8px;
+    border-radius: 4px;
+    background: lightslategray;
+    margin-top: 0.5rem;
+  }
+  
+  .strength-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: green;
+  }
+  
+  .strength-text {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #fff;
+  }
+  
+  
