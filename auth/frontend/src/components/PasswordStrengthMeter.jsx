@@ -1,7 +1,8 @@
 import React from 'react'
 import {Check, X} from 'lucide-react'
 
-const PasswordCriteria = (password) => {
+const PasswordCriteria = ({password}) => {
+    
     const criteria = [
         {label:'Password length greater than 8', met: password.length >= 8},
         {label:'Contains UPPER case', met: /[A-Z]/.test(password)},
@@ -25,8 +26,6 @@ const PasswordCriteria = (password) => {
 
 export default function PasswordStrengthMeter({password}) {
     const getStrength = (pass) => {
-        console.log(pass);
-        
         let strength = 0;
         if (pass.length >= 8) strength++;
         if (pass.match(/[a-z]/) && pass.match(/[A-Z]/)) strength++;

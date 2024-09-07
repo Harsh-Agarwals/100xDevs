@@ -3,6 +3,7 @@ import MotionElement from './components/MotionElement';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage'
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
+import VerificationPage from './pages/VerificationPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<div />} />
           <Route path='/signup' element={<SignupPage />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/verify-email' element={<VerificationPage />} />
         </Routes>
       </Router> 
     </div>
