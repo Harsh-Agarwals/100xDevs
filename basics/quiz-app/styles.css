@@ -33,7 +33,7 @@ body {
 .top-section button:hover, 
 .options button:hover,
 .overall ul li:hover {
-    background-color: rgb(223, 248, 185);
+    background-color: rgb(223, 248, 185) !important;
 }
 
 .timer {
@@ -139,9 +139,13 @@ main {
     border: 1.5px solid green;
     border-radius: 1rem;
     padding: 4px;
-    background-color: rgb(238, 251, 251);
     color: green;
     cursor: pointer;
+    background-color: rgb(238, 251, 251);
+}
+
+.select {
+    background-color: greenyellow !important;
 }
 
 .movements {

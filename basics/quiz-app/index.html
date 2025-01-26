@@ -8,12 +8,14 @@
     <meta name="description" content="Quiz app in pure HTML, CSS and JavaScript">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="script.js" type="module" defer></script>
 </head>
 <body>
 
     <div class="top-section">
         <div>
-            <button>SUBMIT</button>
+            <button class="submit">SUBMIT</button>
         </div>
         <div class="timer">
             <i class="fa-solid fa-clock"></i>
@@ -26,10 +28,11 @@
         <h3 class="description">The following Quiz contains 10 questions. Here are the rules:</h3>
         <ol class="rules">
             <li>There are 10 questions in total.</li>
-            <li>Each question carries 4 marks.</li>
+            <li>Each question carries 4 marks and has <strong>one correct</strong> answer each.</li>
             <li>If correct, <strong>4 marks</strong> is considered, and if incorrect <strong>1 marks</strong> is deduced.</li>
             <li>All questions are not compulsory.</li>
             <li>You are given <strong>5 minutes</strong> to attempt the questions.</li>
+            <li>Confirm your answer by pressing <strong>Confirm</strong> button after every attempt.</li>
         </ol>
     </header>
 
@@ -37,7 +40,7 @@
 
     <main>
         <div class="overall">
-            <ul class="question-status">
+            <ul class="question-status" id="question-status">
                 <li class="one">1</li>
                 <li class="two">2</li>
                 <li class="three">3</li>
@@ -51,20 +54,20 @@
             </ul>
         </div>
         <div class="question">
-            <p>Question-1</p>
-            <h3>What is the largest GDP state of USA?</h3>
+            <p class="question-number">Question-1</p>
+            <h3 class="question-desc">What is the capital of France?</h3>
             <div class="options">
-                <button>Texas</button>
-                <button>New York</button>
-                <button>California</button>
-                <button>Chicago</button>
+                <button class="">Paris</button>
+                <button class="">Berlin</button>
+                <button class="">Madrid</button>
+                <button class="">Rome</button>
             </div>
 
             <div class="movements">
-                <button>< Prev</button>
-                <button>Confirm</button>
-                <button>Clear</button>
-                <button>Next ></button>
+                <button class="prev">< Prev</button>
+                <button class="confirm">Confirm</button>
+                <button class="clear">Clear</button>
+                <button class="next">Next ></button>
             </div>
         </div>
     </main>
