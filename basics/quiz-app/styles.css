@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 0 auto;
+    width: 80%;
+    border: 2px solid green;
+    margin: 0 auto;
+    background-color: aquamarine;
+}
+
+.top-section {
+    background-color: rgb(173, 248, 248);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-section button {
+    border: 1px solid green;
+    color: green;
+    font-weight: bolder;
+    padding: 4px 6px;
+    cursor: pointer;
+    background-color: lightcyan;
+}
+
+.top-section button:hover, 
+.options button:hover,
+.overall ul li:hover {
+    background-color: rgb(223, 248, 185);
+}
+
+.timer {
+     color: green;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     gap: 1rem;
+     font-weight: bolder;
+}
+
+.header {
+    background-color: lightcyan;
+    padding: 1rem 1rem 2rem;
+}
+
+.header .quiz {
+    color: green;
+    text-align: center;
+}
+
+.header .description {
+    font-weight: 600;
+}
+
+.header ol li {
+    font-style: italic;
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    line-height: 1.2rem;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border: 1.5px solid green;
+}
+
+main {
+    background-color: rgb(173, 248, 248);
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.overall {
+    margin: 0;
+    padding: 2rem;
+    background-color: aquamarine;
+}
+
+.overall ul {
+    margin: 0 auto;
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: max-content(5, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.overall ul li {
+    border: 2px solid green;
+    padding: 8px 16px;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    border-radius: 50%;
+    background-color: lightcyan;
+    color: green;
+    cursor: pointer;
+}
+
+.overall ul li:last-child {
+    padding: 8px 11px;
+}
+
+.question {
+    background-color: lightcyan;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question p {
+    font-weight: bolder;
+    color: green;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.question .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+}
+
+.options button {
+    font-size: 1rem;
+    font-weight: bolder;
+    border: 1.5px solid green;
+    border-radius: 1rem;
+    padding: 4px;
+    background-color: rgb(238, 251, 251);
+    color: green;
+    cursor: pointer;
+}
+
+.movements {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.movements button {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+    }
+    main {
+        display: block;
+    }
+    .overall ul {
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 400px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    body {
+        width: 90%;
+    }
+    .overall {
+        display: flex;
+        align-items: center;
+    }
+    .overall ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .question .options {
+        gap: 1rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        grid-template-columns: 3fr 7fr;
+    }
+}
