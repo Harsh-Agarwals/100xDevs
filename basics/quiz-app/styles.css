@@ -11,6 +11,67 @@ body {
     background-color: aquamarine;
 }
 
+.modal, .results {
+    background-color: lightgreen;
+    text-align: center;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 1rem;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.hidden {
+    display: none;
+}
+
+.results {
+    background-color: yellow;
+}
+
+.remove {
+    display: none;
+}
+
+.modal h3 {
+    font-size: 1.5rem;
+    color: green;
+}
+
+.modal button,
+.results button {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 6px 12px;
+    letter-spacing: 1px;
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+.modal button:hover,
+.results button:hover {
+    opacity: 0.8;
+}
+
+.modal .fivemin {
+    background-color: rgb(246, 246, 90);
+    color: orangered;
+}
+
+.modal .custom-time,
+.results button {
+    background-color: lightskyblue;
+    color: blue;
+}
+
+.content {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .top-section {
     background-color: rgb(173, 248, 248);
     display: flex;

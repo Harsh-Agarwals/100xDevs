@@ -13,64 +13,86 @@
 </head>
 <body>
 
-    <div class="top-section">
-        <div>
-            <button class="submit">SUBMIT</button>
-        </div>
-        <div class="timer">
-            <i class="fa-solid fa-clock"></i>
-            <div class="time">00:00</div>
+    <div class="modal">
+        <div class="modal-content">
+            <h3>You are given 5 minutes for this test.</h3>
+            <button class="fivemin">BEGIN</button>
+            <p>OR</p>
+            <h3>Wanted to test in a custom time? Put time here...</h3>
+            <button class="custom-time">START</button>
+            <p>OR</p>
+            <h3>Let's see how fast you answer</h3>
+            <button class="start-timer">START</button>
         </div>
     </div>
 
-    <header class="header">
-        <h1 class="quiz">QUIZ APP</h1>
-        <h3 class="description">The following Quiz contains 10 questions. Here are the rules:</h3>
-        <ol class="rules">
-            <li>There are 10 questions in total.</li>
-            <li>Each question carries 4 marks and has <strong>one correct</strong> answer each.</li>
-            <li>If correct, <strong>4 marks</strong> is considered, and if incorrect <strong>1 marks</strong> is deduced.</li>
-            <li>All questions are not compulsory.</li>
-            <li>You are given <strong>5 minutes</strong> to attempt the questions.</li>
-            <li>Confirm your answer by pressing <strong>Confirm</strong> button after every attempt.</li>
-        </ol>
-    </header>
-
-    <hr>
-
-    <main>
-        <div class="overall">
-            <ul class="question-status" id="question-status">
-                <li class="one">1</li>
-                <li class="two">2</li>
-                <li class="three">3</li>
-                <li class="four">4</li>
-                <li class="five">5</li>
-                <li class="six">6</li>
-                <li class="seven">7</li>
-                <li class="eight">8</li>
-                <li class="nine">9</li>
-                <li class="ten">10</li>
-            </ul>
-        </div>
-        <div class="question">
-            <p class="question-number">Question-1</p>
-            <h3 class="question-desc">What is the capital of France?</h3>
-            <div class="options">
-                <button class="">Paris</button>
-                <button class="">Berlin</button>
-                <button class="">Madrid</button>
-                <button class="">Rome</button>
+    <div class="quiz content">
+        <div class="top-section">
+            <div>
+                <button class="submit">SUBMIT</button>
             </div>
-
-            <div class="movements">
-                <button class="prev">< Prev</button>
-                <button class="confirm">Confirm</button>
-                <button class="clear">Clear</button>
-                <button class="next">Next ></button>
+            <div class="timer">
+                <i class="fa-solid fa-clock"></i>
+                <div class="time">05:00</div>
             </div>
         </div>
-    </main>
+
+        <header class="header">
+            <h1 class="quiz">QUIZ APP</h1>
+            <h3 class="description">The following Quiz contains 10 questions. Here are the rules:</h3>
+            <ol class="rules">
+                <li>There are 10 questions in total.</li>
+                <li>Each question carries 4 marks and has <strong>one correct</strong> answer each.</li>
+                <li>If correct, <strong>4 marks</strong> is considered, and if incorrect <strong>1 marks</strong> is deduced.</li>
+                <li>All questions are not compulsory.</li>
+                <li>You are given <strong>5 minutes</strong> to attempt the questions.</li>
+                <li>Confirm your answer by pressing <strong>Confirm</strong> button after every attempt.</li>
+            </ol>
+        </header>
+
+        <hr>
+
+        <main>
+            <div class="overall">
+                <ul class="question-status" id="question-status">
+                    <li class="one">1</li>
+                    <li class="two">2</li>
+                    <li class="three">3</li>
+                    <li class="four">4</li>
+                    <li class="five">5</li>
+                    <li class="six">6</li>
+                    <li class="seven">7</li>
+                    <li class="eight">8</li>
+                    <li class="nine">9</li>
+                    <li class="ten">10</li>
+                </ul>
+            </div>
+            <div class="question">
+                <p class="question-number">Question-1</p>
+                <h3 class="question-desc">What is the capital of France?</h3>
+                <div class="options">
+                    <button class="">Paris</button>
+                    <button class="">Berlin</button>
+                    <button class="">Madrid</button>
+                    <button class="">Rome</button>
+                </div>
+
+                <div class="movements">
+                    <button class="prev">< Prev</button>
+                    <button class="confirm">Confirm</button>
+                    <button class="clear">Clear</button>
+                    <button class="next">Next ></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="results hidden">
+        <div class="result-content">
+            <h2>Here is your score</h2>
+            <button class="play-again">Play Again</button>
+        </div>
+    </div>
     
 </body>
 </html>

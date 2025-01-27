@@ -23,15 +23,34 @@ questions.forEach(qn => {
     correctAnswers.push(answerIndex);
 })
 
-console.log(correctAnswers);
-
-
 let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");
 let clear = document.querySelector(".clear");
 let confirm = document.querySelector(".confirm");
 
 let submit = document.querySelector(".submit");
+
+let startButtons = document.querySelectorAll(".modal-content button");
+
+for (let i=0;i<startButtons.length;i++) {
+    startButtons[i].addEventListener("click", () => {
+        let quiz = document.querySelector(".quiz")
+        quiz.classList.remove("content");
+
+        let modal = document.querySelector(".modal");
+        modal.classList.add("hidden");
+
+        let timer = document.querySelector(".time");
+
+        if (i==0) {
+            timer.textContent = "05:00";
+        } else if (i==1) {
+            timer.textContent = "10:00";
+        } else {
+            timer.textContent = "00:00";
+        }
+    })
+}
 
 submit.addEventListener("click", res => {
     let correct = 0;
@@ -40,8 +59,20 @@ submit.addEventListener("click", res => {
             correct += 1;
         }
     }
-    let percentCorrect = correct*10;
-    console.log(answers, percentCorrect);
+    let resultElement = document.createElement("h3");
+    resultElement.textContent = `${correct}/10`;
+
+    let quiz = document.querySelector(".quiz")
+    quiz.classList.add("content");
+    let results = document.querySelector(".results");
+    let resultsHeadline = document.querySelector(".results h2");
+    resultsHeadline.insertAdjacentElement("afterend", resultElement);
+    results.classList.remove("hidden");
+
+    let playagain = document.querySelector(".results .play-again");
+    playagain.addEventListener("click", () => {
+        window.location.reload();
+    })
 })
 
 const colorStatus = () => {
