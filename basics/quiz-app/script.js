@@ -29,8 +29,52 @@ let clear = document.querySelector(".clear");
 let confirm = document.querySelector(".confirm");
 
 let submit = document.querySelector(".submit");
+let earlySubmit = true
 
 let startButtons = document.querySelectorAll(".modal-content button");
+let timeOver = document.createElement("h3");
+
+function startTimer (timeCase) {
+    let timer = document.getElementsByClassName("time")[0].textContent;
+    let min = parseInt(timer.slice(0, timer.indexOf(":")));
+    let sec = parseInt(timer.slice(timer.indexOf(":")+1));
+    let timerBlock = document.querySelector(".timer");
+    let time = min*60 + sec;
+    
+    if (timeCase == 2) {
+        time = 600;
+        
+        for (let i=0;i<=time;i++) {
+            setTimeout(() => {
+                let mint = parseInt(i/60);
+                let mintShow = parseInt(mint/10)==0 ? `0${mint}`: `${mint}`;
+                let sect = i%60;
+                let sectShow = parseInt(sect/10)==0 ? `0${sect}`: `${sect}`;
+                timerBlock.textContent = `${mintShow}:${sectShow}`;
+                if (i==time) {
+                    timeOver.textContent = "Oh NO! Time OVER!!";
+                    timeOver.style.color = "red";
+                }
+            }, i*1000);
+        }
+        setTimeout(() => submit.click(), time*1000);
+    } else {
+        for (let i=time;i>=0;i--) {
+            setTimeout(() => {
+                let mint = parseInt(i/60);
+                let mintShow = parseInt(mint/10)==0 ? `0${mint}`: `${mint}`;
+                let sect = i%60;
+                let sectShow = parseInt(sect/10)==0 ? `0${sect}`: `${sect}`;
+                timerBlock.textContent = `${mintShow}:${sectShow}`;
+                if (i==0) {
+                    timeOver.textContent = "Oh NO! Time OVER!!";
+                    timeOver.style.color = "red";
+                }
+            }, (time-i)*1000);
+        }
+        setTimeout(() => submit.click(), time*1000);
+    }
+}
 
 for (let i=0;i<startButtons.length;i++) {
     startButtons[i].addEventListener("click", () => {
@@ -45,10 +89,21 @@ for (let i=0;i<startButtons.length;i++) {
         if (i==0) {
             timer.textContent = "05:00";
         } else if (i==1) {
-            timer.textContent = "10:00";
+            let min = Number(document.getElementById("min").value);
+            let sec = Number(document.querySelector("#sec").value);
+
+            if (min == 0 & sec == 0) {
+                min = 2;
+            }
+
+            min = parseInt(min/10)==0 ? `0${min}` : `${min}`
+            sec = parseInt(sec/10)==0 ? `0${sec}` : `${sec}`
+            
+            timer.textContent = `${min}:${sec}`;
         } else {
             timer.textContent = "00:00";
         }
+        startTimer(i);
     })
 }
 
@@ -60,19 +115,35 @@ submit.addEventListener("click", res => {
         }
     }
     let resultElement = document.createElement("h3");
+    resultElement.classList.add("resultElement");
     resultElement.textContent = `${correct}/10`;
 
     let quiz = document.querySelector(".quiz")
     quiz.classList.add("content");
     let results = document.querySelector(".results");
+
+    try {
+        let resh2 = document.querySelector(".results h2");
+        console.log(document.querySelector(".results").classList);
+        
+        if (earlySubmit) {
+            resh2.insertAdjacentElement("beforebegin", timeOver);
+        }
+    } catch (error) {
+        console.log(`Error ${error}`);        
+    }
+
     let resultsHeadline = document.querySelector(".results h2");
-    resultsHeadline.insertAdjacentElement("afterend", resultElement);
+    if (!document.querySelector(".resultElement")) {
+        resultsHeadline.insertAdjacentElement("afterend", resultElement);
+    }
     results.classList.remove("hidden");
 
     let playagain = document.querySelector(".results .play-again");
     playagain.addEventListener("click", () => {
         window.location.reload();
     })
+    earlySubmit=false;
 })
 
 const colorStatus = () => {
