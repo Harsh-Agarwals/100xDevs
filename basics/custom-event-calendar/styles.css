@@ -13,6 +13,11 @@
     position: relative;
 }
 
+.less-visible {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .heading {
     display: flex;
     flex-direction: row;
@@ -65,15 +70,48 @@
 .dates button {
     padding: 1rem;
     border: none;
-    background-color: rgb(200, 255, 207);
     border-radius: 50%;
     font-weight: bolder;
-    color: green;
     cursor: pointer;
 }
 
-.dates button:hover {
+.dates .green {
+    color: green;
+    background-color: rgb(200, 255, 207);
+}
+
+.dates .green:hover {
     background-color: rgb(4, 217, 4);
+}
+
+.dates .blue {
+    color: rgb(0, 110, 255);
+    background-color: rgb(200, 255, 249);
+}
+
+.dates .blue:hover {
+    background-color: rgb(43, 177, 249);
+}
+
+.dates .red {
+    color: rgb(255, 0, 0);
+    background-color: rgb(253, 222, 213);
+}
+
+.dates .red:hover {
+    background-color: rgb(249, 77, 43);
+}
+
+.dates .yellow {
+    color: rgb(255, 81, 0);
+    background-color: rgb(252, 252, 164);
+}
+
+.dates .yellow:hover {
+    background-color: rgb(249, 170, 43);
+}
+
+.dates button:hover {
     color: white;
 }
 
@@ -83,7 +121,9 @@
     border-radius: 12px;
     width: 250px;
     position: absolute;
-    top: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 3px solid rgb(0, 98, 255);
 }
 

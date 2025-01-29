@@ -15,33 +15,35 @@
 <body>
 
     <div class="calendar">
-        <div class="heading">
-            <p class="name">Harsh</p>
-            <span>
-                <i class="fa-solid fa-user"></i>
-            </span>
+        <div class="bg">
+            <div class="heading">
+                <p class="name">Harsh</p>
+                <span>
+                    <i class="fa-solid fa-user"></i>
+                </span>
+            </div>
+            <hr class="hr">
+            <div class="selectMonth">
+                <select name="month" id="month">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            <hr class="hr">
+            <div class="dates"></div>
         </div>
-        <hr class="hr">
-        <div class="selectMonth">
-            <select name="month" id="month">
-                <option value="January">January</option>
-                <option value="February">February</option>
-                <option value="March">March</option>
-                <option value="April">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="July">July</option>
-                <option value="August">August</option>
-                <option value="September">September</option>
-                <option value="October">October</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
-            </select>
-        </div>
-        <hr class="hr">
-        <div class="dates"></div>
 
-        <div class="desc">
+        <div class="desc hidden">
             <div class="cut">
                 <i class="fa-solid fa-x"></i>
             </div>
@@ -49,14 +51,14 @@
             <p class="event">Event List</p>
             <hr class="hr2">
             <ul class="events">
-                <!-- <li>Republic Day</li> -->
-                <!-- <li>Birthday</li> -->
+                <!-- <li>Republic Day</li>
+                <li>Birthday</li> -->
             </ul>
             <hr class="hr3">
             <div class="new">
                 <p class="addNew">Add new</p>
                 <div class="write">
-                    <form action="">
+                    <form action="" class="inputForm">
                         <input type="text" name="newEvent" id="newEvent">
                         <input type="submit" value="ADD" class="submit">
                     </form>
