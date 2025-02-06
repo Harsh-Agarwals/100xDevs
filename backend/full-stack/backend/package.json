@@ -1,19 +1,17 @@
 {
-  "name": "url-shortener",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "URL Shortener",
+  "description": "App linking frontend and backend",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
+  "type": "module",
   "author": "Harsh Agarwal",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mysql2": "^3.12.0",
-    "uuid": "^11.0.5",
-    "zod": "^3.24.1"
+    "express": "^4.21.2"
   }
 }
