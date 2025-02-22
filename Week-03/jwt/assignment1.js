@@ -1,4 +1,3 @@
-const { log } = require("console");
 const jwt = require("jsonwebtoken");
 const z = require("zod");
 
