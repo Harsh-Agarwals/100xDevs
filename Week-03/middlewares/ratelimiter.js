@@ -5,6 +5,9 @@ const app = express();
 const requestCount = {};
 const timeTrack = {};
 
+// Problem-statement
+// To allow user to only hit api 5 times per minute
+
 const timer = (userId) => {
     for (let i=0;i<60;i++) {
         setTimeout(() => {
