@@ -8,6 +8,7 @@ import { Assignment3 } from './Assignment3.jsx'
 import { Assignment4 } from './Assignment4.jsx'
 import { Assignment5 } from './Assignment5.jsx'
 import { Assignment6 } from './Assignment6.jsx'
+import { Assignment7 } from './Assignment7.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
     {/* <Assignment3 /> */}
     {/* <Assignment4 /> */}
     {/* <Assignment5 /> */}
-    <Assignment6 />
+    {/* <Assignment6 /> */}
+    <Assignment7 />
   </StrictMode>,
 )
