@@ -1,0 +1,92 @@
+.btnBlock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.btn {
+    font-weight: bold;
+    padding: 4px 16px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+.card {
+    margin: 5rem auto;
+    width: 250px;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 5%;
+    font-family: sans-serif;
+}
+
+.header {
+    background: url("https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    border-radius: 5% 5% 0 0;
+    position: relative;
+}
+
+.img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    left: 40%;
+    top: 75%;
+}
+
+.about {
+    padding: 3.5rem 1.25rem 0;
+}
+
+hr {
+    border: 1px solid rgb(171, 170, 170);
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.stats div {
+    margin: 1rem 0;
+}
+
+.stats h5, .card h4, .card p, .stats p {
+    margin: 0;
+}
+
+h4, h5 {
+    color: rgb(53, 52, 52);
+}
+
+p {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding-top: 2px;
+    color: gray;
+}
+
+.gitdata {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
