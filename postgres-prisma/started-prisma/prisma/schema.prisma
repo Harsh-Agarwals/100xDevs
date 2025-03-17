@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = ""
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String
+  firstName String?
+  lastName  String?
+  password  String
+}
+
+model Person {
+  id Int @id @default(autoincrement())
+  name String?
+  email String @unique  // ✅ Make email unique
+  todos Todo[]
+}
+
+model Todo {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  done Boolean @default(false)
+  createdBy Int?  // ✅ Make this nullable
+  person Person? @relation(fields: [createdBy], references: [id])
+}
+
