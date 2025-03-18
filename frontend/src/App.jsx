@@ -5,12 +5,14 @@ import Blog from './pages/Blog';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import NoteState from "./context/NoteState";
+import Alert from "./components/Alert";
 
 function App() {
   return (
     <>
     <NoteState>
         <Navbar />
+        <Alert message={"This is awesome"} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

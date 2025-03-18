@@ -29,10 +29,10 @@ router.post('/signup', signupValidate, async (req, res) => {
 
         const accessToken = jwt.sign({
             username
-        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1m'});
+        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '10m'});
         const refreshToken = jwt.sign({
             username
-        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '5m'});
+        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '20m'});
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 1000*60*5,
@@ -68,10 +68,10 @@ router.post("/login", authValidate, async (req,res) => {
 
         const accessToken = jwt.sign({
             username
-        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1m'});
+        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '10m'});
         const refreshToken = jwt.sign({
             username
-        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '5m'});
+        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '20m'});
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 1000*60*5,
@@ -99,7 +99,7 @@ router.post("/refresh", verifyRefreshHeaders, async ( req, res ) => {
         const username = req.user.username;
 
         const newAccessToken = jwt.sign({ username: username }, process.env.JWT_ACCESS_SECRET, {
-            expiresIn: '1m'
+            expiresIn: '10m'
         });
 
         return res.status(201).json({
@@ -205,10 +205,10 @@ router.post("/reset-password", async (req, res) => {
 
         const accessToken = jwt.sign({
             username: decoded.username
-        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1m'});
+        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '10m'});
         const refreshToken = jwt.sign({
             username: decoded.username
-        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '5m'});
+        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '20m'});
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 1000*60*5,
@@ -252,10 +252,10 @@ router.post("/change-password", verifyHeaders, async (req, res) => {
 
         const accessToken = jwt.sign({
             username
-        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1m'});
+        }, process.env.JWT_ACCESS_SECRET, { expiresIn: '10m'});
         const refreshToken = jwt.sign({
             username
-        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '5m'});
+        }, process.env.JWT_REFRESH_SECRET, { expiresIn: '20m'});
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 1000*60*5,
