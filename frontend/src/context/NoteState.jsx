@@ -9,17 +9,16 @@ const NoteState = (props) => {
     const [ notes, setNotes ] = useState([]);
 
     const getAuthHeaders = () => {
-        const token = localStorage.getItem('token');
-        return token ? { 'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzMxMTczLCJleHAiOjE3NDIzMzE3NzN9.XY77_QojXCipD4Fr0Luuocf12nvQ8ptlmATlEnfvrxA` } : {};
+        // const token = localStorage.getItem('token');
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzgwNTAxLCJleHAiOjE3NDIzODExMDF9.zse6xR01bH1nmbvFO20-kSQ5f6RbGWnZxXKqEkaxmbk"
+        return token ? { 'Authorization': `Bearer ${token}` } : {};
     }
 
     const getNotes = async () => {
         try {
             const url = `${host}/api/notes/get-notes`;
             const response = await axios.get(url, {
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzMxMTczLCJleHAiOjE3NDIzMzE3NzN9.XY77_QojXCipD4Fr0Luuocf12nvQ8ptlmATlEnfvrxA`
-                }
+                headers: getAuthHeaders()
             });
             if (response.data.success) {
                 console.log(response.data.message);
@@ -41,9 +40,7 @@ const NoteState = (props) => {
             let note = {'title': title, 'description': description, 'tag': tag};
             const url = `${host}/api/notes/create`;
             const response = await axios.post(url, note, {
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzMxMTczLCJleHAiOjE3NDIzMzE3NzN9.XY77_QojXCipD4Fr0Luuocf12nvQ8ptlmATlEnfvrxA`
-                }
+                headers: getAuthHeaders()
             });
             if (response.data.success) {
                 console.log(response.data.message);
@@ -60,9 +57,7 @@ const NoteState = (props) => {
         try {
             const url = `${host}/api/notes/delete/${id}`;
             const response = await axios.delete(url, {
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzMxMTczLCJleHAiOjE3NDIzMzE3NzN9.XY77_QojXCipD4Fr0Luuocf12nvQ8ptlmATlEnfvrxA`
-                }
+                headers: getAuthHeaders()
             });
             if (response.data.success) {
                 console.log(response.data.message);
@@ -79,9 +74,7 @@ const NoteState = (props) => {
         try {
             const url = `${host}/api/notes/update/${id}`;
             const response = await axios.put(url, { title, description, tag }, {
-                headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhcnNoQWc4MTEyIiwiaWF0IjoxNzQyMzMxMTczLCJleHAiOjE3NDIzMzE3NzN9.XY77_QojXCipD4Fr0Luuocf12nvQ8ptlmATlEnfvrxA`
-                }
+                headers: getAuthHeaders()
             });
             if (response.data.success) {
                 console.log(response.data.message);

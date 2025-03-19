@@ -21,7 +21,10 @@ const Navbar = () => {
                 <Link to="/blog" ><li className={locationNav("/blog")}>Blog</li></Link>
                 <Link to="/contact" ><li className={locationNav("/contact")}>Contact</li></Link>
             </ul>
-            <button className=' bg-purple-800 text-white px-6 py-1 rounded-3xl font-medium hover:bg-indigo-600'>Sign In</button>
+            <div>
+              <Link to="/login" className=' bg-purple-800 text-white px-6 mx-2 py-1 rounded-3xl font-medium hover:bg-indigo-600'>Login</Link>
+              <Link to="/signup" className=' bg-red-600  text-white px-6 py-1 rounded-3xl font-medium hover:bg-red-700'>SignUp</Link>
+            </div>
         </div>
     </div>
   )

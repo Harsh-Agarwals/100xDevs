@@ -75,6 +75,7 @@ const NoteItem = ({ props }) => {
                             <button 
                                 className='bg-green-500 text-white px-4 py-2 rounded' 
                                 onClick={handleUpdateNote}
+                                disabled={updatedTitle.length<5 || updatedDescription.length<5}
                             >
                                 Update
                             </button>
