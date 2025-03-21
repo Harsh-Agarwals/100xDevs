@@ -64,7 +64,7 @@ router.post("/login", authValidate, async (req,res) => {
         if (!user) return res.status(400).json({'success': false, 'message': 'User does not exist'});
 
         const pwdMatch = await bcrypt.compare(password, user.password);
-        if (!pwdMatch) return res.status(400).json({'success': false, 'message': 'Invalid credentials'});
+        if (!pwdMatch) return res.status(401).json({'success': false, 'message': 'Invalid credentials'});
 
         const accessToken = jwt.sign({
             username
