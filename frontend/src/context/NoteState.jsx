@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import NoteContext from './NoteContext';
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import { AlertContext } from './AlertState';
 
 const BACKEND_HOST = import.meta.env.VITE_BACKEND_HOST
 
 const NoteState = (props) => {
     const host = `http://localhost:${BACKEND_HOST}`;
     const [ notes, setNotes ] = useState([]);
+    const navigate = useNavigate();
+    const {style, message, color, alertNow, setStyle, setMessage, setColor, setAlert} = useContext(AlertContext);
 
     const getAuthHeaders = () => {
         // const token = localStorage.getItem('accessToken');
@@ -40,6 +44,8 @@ const NoteState = (props) => {
                 headers: getAuthHeaders(),
                 withCredentials: true
             });
+            console.log(response);
+            
             if (response.data.success) {
                 console.log(response.data.message);
                 setNotes(response.data.notes);
@@ -51,7 +57,13 @@ const NoteState = (props) => {
                 console.log(response.data.message);
             }
         } catch (error) {
-            console.error('Error fetching notes:', error);
+            if (error.response.data.message == "Error: TokenExpiredError: jwt expired") {
+                localStorage.removeItem("accessToken");
+                await setTimeout(() => {
+                    alert("Please login again...");
+                    navigate("/login");
+                }, 200);
+            }
         }
     }
 
@@ -65,6 +77,12 @@ const NoteState = (props) => {
             });
             if (response.data.success) {
                 console.log(response.data.message);
+                setMessage("Note added successfully! 🎉");
+                setColor("text-green-700");
+                setStyle("bg-green-300");
+                setAlert(true);
+                console.log(alertNow);
+                
                 getNotes();
             } else {
                 console.log(response.data.message);
@@ -84,11 +102,21 @@ const NoteState = (props) => {
             if (response.data.success) {
                 console.log(response.data.message);
                 setNotes(notes.filter((note) => note._id != id));
+                setMessage("Note deleted successfully! 🎉");
+                setColor("text-red-700");
+                setStyle("bg-red-300");
+                setAlert(true);
             } else {
                 console.log(response.data.message);
             }
         } catch (error) {
-            console.error('Error deleting note:', error);
+            if (error.response.data.message == "Error: TokenExpiredError: jwt expired") {
+                localStorage.removeItem("accessToken");
+                await setTimeout(() => {
+                    alert("Please login again...");
+                    navigate("/login");
+                }, 200);
+            }
         }
     };
 
@@ -102,6 +130,10 @@ const NoteState = (props) => {
             if (response.data.success) {
                 console.log(response.data.message);
                 getNotes();
+                setMessage("Note updated successfully! 🎉");
+                setColor("text-orange-700");
+                setStyle("bg-yellow-300");
+                setAlert(true);
             } else {
                 console.log(response.data.message);
             }
