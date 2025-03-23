@@ -58,7 +58,7 @@ const NoteState = (props) => {
             }
         } catch (error) {
             if (error.response.data.message == "Error: TokenExpiredError: jwt expired") {
-                localStorage.removeItem("accessToken");
+                sessionStorage.removeItem("accessToken");
                 await setTimeout(() => {
                     alert("Please login again...");
                     navigate("/login");
@@ -111,7 +111,7 @@ const NoteState = (props) => {
             }
         } catch (error) {
             if (error.response.data.message == "Error: TokenExpiredError: jwt expired") {
-                localStorage.removeItem("accessToken");
+                sessionStorage.removeItem("accessToken");
                 await setTimeout(() => {
                     alert("Please login again...");
                     navigate("/login");
