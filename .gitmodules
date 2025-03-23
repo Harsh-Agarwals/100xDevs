@@ -1,0 +1,3 @@
+[submodule "inb"]
+	path = inb
+	url = ./inb
