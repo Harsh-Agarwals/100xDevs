@@ -36,7 +36,14 @@ router.post("/create", verifyHeaders, async (req, res) => {
         const {title, description, tag} = req.body;
         const { username } = req.user;
 
-        const note = await Note.findOne({title});
+        const userr = await User.findOne({username: username});
+        const userId = userr._id;
+        console.log(userId);
+        console.log(userr);
+        
+        const note = await Note.findOne({title: title, userId: userId});
+        console.log(note);
+        
         if (note) return res.status(500).json({'success': false, 'message': 'Note already exists!'});
 
         const user = await User.findOne({ username });
@@ -47,6 +54,7 @@ router.post("/create", verifyHeaders, async (req, res) => {
             tag,
             userId: user._id
         });
+        console.log(newNote);        
 
         await newNote.save();
         await User.updateOne({

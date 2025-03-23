@@ -12,7 +12,11 @@ const SignUp = () => {
   const signup = async () => {
     try {
       const url = `${host}/api/auth/signup`;
+      console.log(url, user);
+      
       const response = await axios.post(url, user);
+      console.log(response.data);
+      
       if (response.data.success) {
         const accessToken = response.data.accessToken;
         alert(`Signup Successful! New User Created\n\n ${response.data.message}`);
@@ -20,7 +24,7 @@ const SignUp = () => {
         alert(response.data.message);
       }
     } catch (error) {
-      console.log(`Error: ${error}`);
+      alert(`Error: ${error}`);
     }
   }
   
