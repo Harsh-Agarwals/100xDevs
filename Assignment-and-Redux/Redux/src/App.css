@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+    background-color: aquamarine;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(66, 252, 190);
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+.links a {
+    text-decoration: none;
+    color: black;
+}
+
+.links a:hover {
+    color: rgb(0, 75, 0);
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+.home button {
+    padding: 0.5rem 1rem;
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.home button:hover {
+    background-color: rgb(66, 252, 190);
+    color: rgb(0, 75, 0);
+}
+
+.text-label {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 8px;
+}
+
+.completed-label {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 8px;
+}
+
+.btn {
+    margin: 8px;
+    padding: 0.5rem 1rem;
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(66, 252, 190);
+    color: rgb(0, 75, 0);
+}
+
+.todo-heading {
+    margin: 1rem;
+}
