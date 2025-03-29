@@ -1,7 +1,9 @@
 "use client";
 
+import React from "react";
+
 export default function Button() {
-    function btnClick(e) {
+    function btnClick(e: React.SyntheticEvent) {
         e.preventDefault();
         console.log(e.target);        
     }
