@@ -12,7 +12,8 @@ export function Signup() {
 
     const btnClick = async (e: any) => {
         e.preventDefault();
-        const res = await axios.post("http://localhost:3001/api/user", { username, password });
+        // const res = await axios.post("http://localhost:3001/api/user", { username, password });
+        const res = await axios.get("http://localhost:3001/api/user")
         console.log(res);
         router.push("/")
     }
