@@ -62,8 +62,8 @@ async def handler(websocket):
         # connected_clients.remove(websocket)
         connected_clients.discard(websocket)
 
-        for room in rooms.values():
-            rooms[room].discard(websocket)
+        for client_set in rooms.values():
+            client_set.discard(websocket)
 
         await websocket.close()
 

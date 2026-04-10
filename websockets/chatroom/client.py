@@ -11,7 +11,7 @@ def get_rooms_list(argvs_list):
             rooms.append(argvs_list[i+1])
     return rooms
 
-async def get_available_port_server(server):
+async def get_available_load_server(server):
     # get server which has minimum load
     server_loads = {}
     # for server in servers:
@@ -30,7 +30,7 @@ async def get_available_port_server(server):
     # return min(server_loads, key=server_loads.get)
 
 async def get_available_port_server():
-    tasks = [get_available_port_server(server) for server in servers]
+    tasks = [get_available_load_server(server) for server in servers]
     loads = await asyncio.gather(*tasks)
     return servers[loads.index(min(loads))]
 
@@ -57,15 +57,15 @@ async def main():
         print(f"Connecting to server {uri}...")
         await websocket.send(json.dumps({'message': 'ROOMS', 'rooms': rooms_list}))
         print("Sent rooms list to server")
-        # response = await websocket.recv()
-        # response = json.loads(response)
-        # print(f"Received response from server: Joined rooms {response['rooms']}")
+        response = await websocket.recv()
+        response = json.loads(response)
+        print(f"Received response from server: Joined rooms {response['rooms']}")
 
         # start receiver
-        asyncio.create_task(receive_messages(websocket))
+        receiver_task = asyncio.create_task(receive_messages(websocket))
 
         while True:
-            message = input("Enter message to send (or 'exit' to quit):")
+            message = await asyncio.to_thread(input, "Enter message to send (or 'exit' to quit):")
             if message.lower() == "exit":
                 await websocket.send(json.dumps({"message": "EXIT"}))
                 print("Exiting...")
@@ -73,11 +73,26 @@ async def main():
                 # response = json.loads(response)
                 # if response["message"] == "EXITED":
                     # print("Exited successfully")
-                print("Exited successfully")
+                
+                try:
+                    response = await websocket.recv()
+                    response = json.loads(response)
+                    if response["message"] == "EXITED":
+                        print("Exited successfully")
+                except Exception as e:
+                    print(f"Error while exiting: {e}")
+
+                receiver_task.cancel()
+                try:
+                    await receiver_task
+                except asyncio.CancelledError:
+                    pass
+                
                 await websocket.close()
+                print("Exited successfully")
                 break
             else:
-                rooms_to_send = input("Enter rooms to send message to (comma separated, or 'all' for all rooms):")
+                rooms_to_send = await asyncio.to_thread(input, "Enter rooms to send message to (comma separated, or 'all' for all rooms):")
                 if rooms_to_send.lower() == "all":
                     payload = {'message': 'BROADCAST', 'rooms': 'all', 'content': message}
                 else:
